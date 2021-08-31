@@ -23,10 +23,7 @@ function searchWeather(q){
 }
 
 
-// Ask user for city name
-// const getCity = () => {
 
-// }
 
 // const apiKey = fXhAVKDfHo3e7GCF4AueEwhuFNF9X6cq;
 
