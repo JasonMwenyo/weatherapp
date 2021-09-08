@@ -20,16 +20,23 @@ addEventListener("keydown", (e) =>{
 });
 
 function searchWeather(q){
-    fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?q=${q}&apikey=${apiKey}`)  //Fix this
+    fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?q=${q}&apikey=${apiKey}`) 
     .then(response => response.json())
-    .then(data => console.log(data));
+    // .then(data => console.log(data));
+    .then(data => {
+        let output = "<h3>Posts</h3>";
+        data.forEach(function(post){
+            output += ` 
+                <div>
+                    <p>${post.Key}</p>
+                </div>
+            `;
+        });
+        document.getElementById("temp").innerHTML = output;
+    })
 }
 
 
 
-
-// const apiKey = fXhAVKDfHo3e7GCF4AueEwhuFNF9X6cq;
-
-// fetch("http://dataservice.accuweather.com/locations/v1/cities/search")
 
 
