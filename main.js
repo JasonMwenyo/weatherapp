@@ -20,12 +20,12 @@ addEventListener("keydown", (e) =>{
 });
 
 function searchWeather(q){
-    let loc;
+    let locationKey;
     fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?q=${q}&apikey=${apiKey}`) 
     .then(response => response.json())
     // .then(data => console.log(data))
-    .then(data => { return loc = data[0].Key})
-    .then(loc => getTemperature(loc))
+    .then(data => { return locationKey = data[0].Key})
+    .then(locationKey => getTemperature(locationKey))
     
     // .then(console.log(loc))
     
@@ -44,11 +44,14 @@ function searchWeather(q){
 
 // 243939
 
-function getTemperature(loc){
-    // console.log(loc)
-    fetch(`http://dataservice.accuweather.com/currentconditions/v1/${loc}?apikey=${apiKey}`)
+function getTemperature(locationKey){
+    // console.log(locationKey)
+    let temp = 0;
+    fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`)
     .then(response => response.json())
-    .then(data => console.log(data[0]))
+    // .then(data => console.log(data[0].Temperature.Metric.Value))
+    .then(data => { return temp = data[0].Temperature.Metric.Value })
+    // .then(data => console.log(temp))
 }
 
 
