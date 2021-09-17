@@ -26,6 +26,7 @@ function searchWeather(q){
     // .then(data => console.log(data))
     .then(data => { return locationKey = data[0].Key})
     .then(locationKey => getTemperature(locationKey))
+    // .then(console.log(j))
     
     // .then(console.log(loc))
     
@@ -44,17 +45,17 @@ function searchWeather(q){
 
 // 243939
 
-function getTemperature(locationKey){
-    // console.log(locationKey)
-    let temp = 0;
+ function getTemperature(locationKey){
+    let j;
     fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`)
     .then(response => response.json())
-    // .then(data => console.log(data[0].Temperature.Metric.Value))
-    .then(data => { return temp = data[0].Temperature.Metric.Value })
-    // .then(data => console.log(temp))
+    .then(data => j = (data[0].Temperature.Metric.Value + " " + data[0].Temperature.Metric.Unit))
+    // .then(() => console.log(j))
 }
 
 
 
+
+// Windhoek
 
 
