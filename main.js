@@ -49,8 +49,8 @@ function searchWeather(q){
     let j;
     fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`)
     .then(response => response.json())
-    .then(data => j = (data[0].Temperature.Metric.Value + " " + data[0].Temperature.Metric.Unit))
-    // .then(() => console.log(j))
+    .then(data => j = (data[0].Temperature.Metric.Value + "°" + data[0].Temperature.Metric.Unit))
+    .then(() => console.log(j))
 }
 
 
