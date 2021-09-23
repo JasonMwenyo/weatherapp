@@ -7,12 +7,8 @@ const letters = /^[A-Za-z]+$/; //Might need to allow users to enter space
 addEventListener("keydown", (e) =>{
     if(e.key === "Enter"){
         if(cityName.value.match(letters)){
-            // console.log("Yes");
             q = cityName.value;
-            // console.log(q);
-            
             searchWeather(q);
-
         } else {
             console.log("Wrong");
         }
@@ -25,9 +21,9 @@ function searchWeather(q){
     .then(response => response.json())
     // .then(data => console.log(data))
     .then(data => { return locationKey = data[0].Key})
-    .then(locationKey => getTemperature(locationKey))
-    // .then(console.log(j))
-    
+    .then(locationKey => getTemperature(locationKey))   
+    .then(locationKey => console.log(locationKey))    
+
     // .then(console.log(loc))
     
     // .then(data => {
@@ -45,13 +41,22 @@ function searchWeather(q){
 
 // 243939
 
- function getTemperature(locationKey){
+function getTemperature(locationKey){
     let temp;
-    let condition;
     fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`)
     .then(response => response.json())
     .then(data => temp = (data[0].Temperature.Metric.Value + "°" + data[0].Temperature.Metric.Unit))
     .then(() => console.log(temp))
+}
+
+
+// Fix this function
+function getWeatherText(l){
+    // console.log(l)
+    // let condition;
+    // fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`)
+    // .then(response => response.json())
+    // .then(data => console.log(data))
 }
 
 
