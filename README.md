@@ -6,10 +6,8 @@ A weather application to get the temperature, weather condition and whether it i
 
 ## User Stories
 
- 🔳 Enter the name of a city into the input field. <br>
+ ✅ Enter the name of a city into the input field. <br>
  🔳 By pressing enter, the user submits the name of the city which updates the DOM with the temperature, weather condition, image of day or night and weather condition icon. <br>
- <!-- ✅  User can copy the resulting CSS to the clipboard -->
-
 
 ## Extra features
 
