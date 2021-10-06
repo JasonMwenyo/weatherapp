@@ -11,6 +11,7 @@ addEventListener("keydown", (e) =>{
             cityNameDisplay(q);
             searchTempKey(q);
             searchWeatherKey(q);
+            // searchDayNightKey(q); //create this function
         } else {
             console.log("Wrong");
         }
@@ -28,15 +29,15 @@ function searchTempKey(q){
     fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?q=${q}&apikey=${apiKey}`) 
     .then(response => response.json())
     .then(data => { return locationKey = data[0].Key})
-    .then(locationKey => getTemperature(locationKey))      
+    .then(locationKey => getTemperature(locationKey))            
 }
 
-// Pulls the temperature
+// Pulls & update temperature into DOM
 function getTemperature(locationKey){
     let temp;
     fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`)
     .then(response => response.json())
-    .then(data => temp = (data[0].Temperature.Metric.Value + "°" + data[0].Temperature.Metric.Unit))
+    .then(data => temp = (data[0].Temperature.Metric.Value.toFixed(0) + "°" + data[0].Temperature.Metric.Unit))
     .then((temp) => document.getElementById("temperature").innerHTML = temp);
 }
 
@@ -56,7 +57,7 @@ function getWeatherText(locationKey){
     fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`)
     .then(response => response.json())
     .then(data => weatherText = (data[0].WeatherText))
-    .then(() => console.log(weatherText))
+    .then(weatherText => document.getElementById("condition").innerHTML = weatherText)
 }
 
 
