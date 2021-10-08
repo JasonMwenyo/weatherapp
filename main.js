@@ -12,7 +12,7 @@ addEventListener("keydown", (e) =>{
             searchTempKey(q);
             searchWeatherKey(q);
             weatherConditionKey(q);
-            // backgroundKey(q);
+            backgroundKey(q);
         } else {
             console.log("Wrong");
         }
@@ -89,14 +89,17 @@ function backgroundKey(q){
     .then(locationKey => setBackgroundImage(locationKey))            
 }
 
-function setBackgroundImage(){
-    let dayOrNight;
+function setBackgroundImage(locationKey){
+    let isDayTime;
     fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`)
     .then(response => response.json())
-    .then(data => dayOrNight = (data[0].IsDayTime))
-    .then(dayOrNight => console.log(dayOrNight))
-    // document.body.style.backgroundImage = "url('img_tree.png')";
-}
+    .then(data => isDayTime = (data[0].IsDayTime))
+    .then(isDayTime => {if(isDayTime === true){
+        document.body.style.backgroundImage = "url('../images/day.jpg')";
+    } else {
+        document.body.style.backgroundImage = "url('../images/night.jpg')";  
+    }
+})}
 
 function selectWeatherIcon(icon){
     switch (icon) {
