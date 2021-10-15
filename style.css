@@ -4,10 +4,10 @@
 }
 
 #box {
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 10%;
     border-style: solid;
     border-radius: 5%;
     background-color: white;
