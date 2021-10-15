@@ -14,13 +14,32 @@
     text-align: center;
 
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
 #title {
-    /* text-align: center; */
     text-decoration: underline;
     margin-top: 4%;
     margin-bottom: 4%;
 }
+
+#city {
+    margin-top: 40px;
+    margin-bottom: 5px;
+}
+
+#condition {
+    margin-bottom: 5px;
+}
+
+#temperature {
+    margin-bottom: 5px;
+}
+
+#cityName {
+    background: url(./node_modules/bootstrap-icons/icons/search.svg) no-repeat scroll 270px 10px;
+    padding-left: 20px;
+}
+
+
