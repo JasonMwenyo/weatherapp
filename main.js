@@ -1,7 +1,8 @@
 let cityName = document.getElementById("cityName");
 const apiKey = "fXhAVKDfHo3e7GCF4AueEwhuFNF9X6cq"; 
 let q;
-const letters = /^[A-Za-z]+$/; //Might need to allow users to enter space
+const letters = /^[A-Za-z ]+$/;
+let spaces = /\s/g;
 
 
 addEventListener("keydown", (e) =>{
@@ -9,6 +10,14 @@ addEventListener("keydown", (e) =>{
         if(cityName.value.match(letters)){
             q = cityName.value;
             cityNameDisplay(q);
+            if (q.match(spaces)){
+                q = q.replace(/\s/g, "");
+                searchTempKey(q);
+                searchWeatherKey(q);
+                weatherConditionKey(q);
+                backgroundKey(q);
+            }
+
             searchTempKey(q);
             searchWeatherKey(q);
             weatherConditionKey(q);
@@ -41,7 +50,6 @@ function getTemperature(locationKey){
     .then(data => temp = (data[0].Temperature.Metric.Value.toFixed(0) + "°" + data[0].Temperature.Metric.Unit))
     .then((temp) => document.getElementById("temperature").innerHTML = temp);
 }
-
 
 // Pulls city key for weather function
 function searchWeatherKey(q){
@@ -76,7 +84,6 @@ function updateWeatherIcon(locationKey){
     fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`)
     .then(response => response.json())
     .then(data => icon = (data[0].WeatherIcon))
-    // .then(icon => document.getElementById("condition").innerHTML = icon)
     .then(icon => selectWeatherIcon(icon))
 }
 
