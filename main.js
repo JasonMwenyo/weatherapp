@@ -9,6 +9,7 @@ addEventListener("keydown", (e) =>{
     if(e.key === "Enter"){
         if(cityName.value.match(letters)){
             q = cityName.value;
+            storeCity(q) //Store city name in localStorage
             cityNameDisplay(q);
             if (q.match(spaces)){
                 q = q.replace(/\s/g, "");
@@ -17,7 +18,6 @@ addEventListener("keydown", (e) =>{
                 weatherConditionKey(q);
                 backgroundKey(q);
             }
-
             searchTempKey(q);
             searchWeatherKey(q);
             weatherConditionKey(q);
@@ -27,6 +27,23 @@ addEventListener("keydown", (e) =>{
         }
     }
 });
+
+window.onload = function(){
+    let k = localStorage.getItem('country');
+    document.getElementById('cityName').value = k;
+    if(k.match(spaces)){
+        k = k.replace(/\s/g, "");
+        searchTempKey(k);
+        searchWeatherKey(k);
+        weatherConditionKey(k);
+        backgroundKey(k);
+    } else {
+        searchTempKey(k);
+        searchWeatherKey(k);
+        weatherConditionKey(k);
+        backgroundKey(k);
+    }
+}
 
 // Displays City name in DOM
 function cityNameDisplay(q){
@@ -290,4 +307,9 @@ function selectWeatherIcon(icon){
             console.log("not available");
             break;
     }
+}
+
+// Store city name to localStorage
+function storeCity(q){
+    localStorage.setItem("country", q);
 }

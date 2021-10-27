@@ -11,4 +11,4 @@ A weather application to get the temperature, weather condition and whether it i
 
 ## Extra features
 
- 🔳 By closing the browser window the city name will be stored in localStorage and when the user returns, the name will be retrieved to make an api call to update the DOM.
+ ✅ By closing the browser window the city name will be stored in localStorage and when the user returns, the name will be retrieved to make an api call to update the DOM.
